@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"window.newWindowProfile": "Default", // 新窗口使用的配置文件, 只能在"默认配置文件"中设置
+				"files.autoSave": "afterDelay", // 自动保存文件
+				"editor.formatOnSave": true, // 保存时自动格式化
+				"files.simpleDialog.enable": true, // 简单对话框, ctrl+n 新建文件时不再弹出对话框
+				"editor.insertSpaces": true, // 使用空格代替制表符
+				"editor.tabSize": 4, // 缩进空格数
+				"editor.autoClosingDelete": "always", // 删除左括号时总是自动删除右括号
+				"editor.minimap.autohide": "mouseover", // 鼠标不在缩略图上时隐藏缩略图，鼠标在缩略图上时显示缩略图
+				"terminal.integrated.cursorStyle": "underline", // 终端光标样式使用下划线
+				"explorer.confirmDelete": false, // 删除文件时不再弹出确认对话框
+				"explorer.confirmDragAndDrop": false, // 拖放移动文件或文件夹时不再弹出确认对话框
+				"vsicons.dontShowNewVersionMessage": true, // 不显示新版本消息
+				"workbench.iconTheme": "vscode-icons" // 使用 vscode-icons 图标主题
+			},
+			"extensions": [
+				"piotrpalarz.vscode-gitignore-generator", // .gitignore 文件生成器
+				"mhutchie.git-graph", // Git 图形化视图
+				"eamodio.gitlens", // Git 增强工具, 主要为了能显示代码作者
+				"ms-python.vscode-pylance", // Python 语言支持
+				"vscode-icons-team.vscode-icons", // VSCode 图标主题
+				"github.copilot", // GitHub Copilot, AI 代码补全
+				"github.copilot-chat" // GitHub Copilot Chat, AI 聊天助手
+			]
+		}
+	},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	"containerEnv": {
+		"PIP_INDEX_URL": "https://mirrors.aliyun.com/pypi/simple/",
+		"PIP_TRUSTED_HOST": "mirrors.aliyun.com"
+	},
+	"postCreateCommand": "pip install -U pip && pip install fastapi uvicorn[standard]"
+}
