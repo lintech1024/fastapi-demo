@@ -45,5 +45,6 @@
 		"PIP_INDEX_URL": "https://mirrors.aliyun.com/pypi/simple/",
 		"PIP_TRUSTED_HOST": "mirrors.aliyun.com"
 	},
-	"postCreateCommand": "pip install -U pip && pip install fastapi uvicorn[standard]"
+	"postCreateCommand": "pip install -U pip && pip install fastapi uvicorn[standard]",
+	"postStartCommand": "uvicorn main:app --reload"
 }
